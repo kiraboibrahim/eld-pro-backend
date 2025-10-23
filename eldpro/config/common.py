@@ -4,8 +4,8 @@ import dj_database_url
 from configurations import Configuration
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 class Common(Configuration):
+    DOTENV = os.path.join(os.path.dirname(BASE_DIR), ".env")
 
     INSTALLED_APPS = (
         'django.contrib.admin',
@@ -55,7 +55,7 @@ class Common(Configuration):
     # Postgres
     DATABASES = {
         'default': dj_database_url.config(
-            default='postgres://postgres:@postgres:5432/postgres',
+            default='sqlite:///db.sqlite3',
             conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
         )
     }
@@ -202,5 +202,5 @@ class Common(Configuration):
         )
     }
 
-    ORS_API_KEY = os.getenv('ORS_API_KEY')
-    CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '').split(',') if os.getenv('CORS_ALLOWED_ORIGINS') else []
+    ORS_API_KEY = os.getenv('DJANGO_ORS_API_KEY')
+    CORS_ALLOWED_ORIGINS = os.getenv('DJANGO_CORS_ALLOWED_ORIGINS', '').split(',') if os.getenv('DJANGO_CORS_ALLOWED_ORIGINS') else []
