@@ -5,7 +5,7 @@ from configurations import Configuration
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class Common(Configuration):
-    DOTENV = os.path.join(os.path.dirname(BASE_DIR), ".env")
+    #DOTENV = os.path.join(os.path.dirname(BASE_DIR), ".env")
 
     INSTALLED_APPS = (
         'django.contrib.admin',
